@@ -1,0 +1,74 @@
+Git es un sistema de control de versiones ampliamente utilizado para el desarrollo de software. A continuación se muestran algunos comandos comunes de Git con su descripción y ejemplos de variables de configuración.
+
+git init: Inicializa un nuevo repositorio Git en un directorio local vacío o existente.
+Variables de configuración relacionadas:
+
+user.name: El nombre del usuario de Git.
+user.email: La dirección de correo electrónico del usuario de Git.
+Ejemplo de uso:
+
+csharp
+Copy code
+git init
+git clone: Crea una copia local de un repositorio remoto existente.
+Variables de configuración relacionadas:
+
+core.autocrlf: Configura cómo Git maneja los finales de línea en diferentes sistemas operativos.
+Ejemplo de uso:
+
+bash
+Copy code
+git clone https://github.com/user/repo.git
+git add: Agrega cambios de archivos al área de preparación para ser confirmados.
+Variables de configuración relacionadas:
+
+No hay variables de configuración específicas para este comando.
+Ejemplo de uso:
+
+csharp
+Copy code
+git add archivo1 archivo2
+git commit: Confirma los cambios en el área de preparación y agrega un mensaje de confirmación.
+Variables de configuración relacionadas:
+
+commit.template: Establece una plantilla para los mensajes de confirmación.
+Ejemplo de uso:
+
+sql
+Copy code
+git commit -m "Agregado nuevo archivo" 
+git push: Envía los cambios confirmados a un repositorio remoto.
+Variables de configuración relacionadas:
+
+remote.<nombre>.url: Especifica la URL del repositorio remoto.
+push.default: Configura cómo Git maneja las ramas al hacer push.
+Ejemplo de uso:
+
+perl
+Copy code
+git push origin master
+git pull: Recupera los cambios de un repositorio remoto y los fusiona con el repositorio local.
+Variables de configuración relacionadas:
+
+branch.<nombre>.merge: Especifica la rama remota que se fusionará con la rama local al hacer pull.
+Ejemplo de uso:
+
+Copy code
+git pull origin master
+git branch: Muestra una lista de ramas locales.
+Variables de configuración relacionadas:
+
+color.branch: Configura el color de las ramas en la salida del comando.
+Ejemplo de uso:
+
+Copy code
+git branch
+git checkout: Cambia entre ramas o recupera versiones específicas de archivos.
+Variables de configuración relacionadas:
+
+core.filemode: Configura cómo Git maneja los permisos de archivo.
+Ejemplo de uso:
+
+Copy code
+git checkout master
+Estos son solo algunos de los comandos más comunes en Git. Hay muchos otros comandos disponibles en Git, cada uno con su propia lista de variables de configuración relacionadas. Para obtener más información, puedes consultar la documentación oficial de Git.
