@@ -66,9 +66,7 @@ salir.
         Collections.sort(razasPerros);
         for(String raza : razasPerros){
             System.out.println(raza);
-        }
-        
-        
+        } 
     }
     
 }

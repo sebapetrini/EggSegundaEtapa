@@ -46,8 +46,14 @@ public class Guia10Ejercicio4 {
             System.out.print("Desea cargar otra Película S/N: ");
             opc = Leer.next().toLowerCase().substring(0, 1);          
         }while(opc.equals("s")); 
-       
-        Collections.sort(peliculas, cmprtr);
+        
+       pS.imprimirPeliculas(peliculas);
+       pS.imprimirPeliculasLargas(peliculas);
+       pS.ordenarPeliculaMayoraMenor(peliculas);
+       pS.ordenarPeliculaMenoraMayor(peliculas);
+       pS.ordenarPeliculaTitulo(peliculas);
+       pS.ordenarPeliculaDirector(peliculas);
+        
        
         
         
