@@ -28,8 +28,7 @@ import Servicios.alquilerServicios;
  */
 public class Guia12Extra01
 {
-
-
+    
     public static void main(String[] args)
     {
         
@@ -37,10 +36,7 @@ public class Guia12Extra01
         Alquiler alquiler = aS.crearAlquiler();
         
         System.out.println("El Valor del alquiler es: " + aS.calcularAlquiler(alquiler));
-        
-
-        
-        
+  
     }
 
 }

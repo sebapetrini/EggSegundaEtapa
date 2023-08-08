@@ -21,7 +21,7 @@ public class alquilerServicios
     {
         System.out.println("Ingrese el nombre: ");
         String nombre = leer.next();
-        System.out.println("Ingrese n documento: ");
+        System.out.println("Ingrese número de documento: ");
         int dni = leer.nextInt();
         System.out.println("Ingrese la fecha de alquiler: ");
         System.out.print("Día: ");
@@ -54,9 +54,9 @@ public class alquilerServicios
             anio = leer.nextInt();
         } while (anio<1900 || anio>2023);
         Date fechaDevolucion = new Date(anio - 1900, mes - 1, dia);
-        System.out.println("En que posicion se encuentra? ");
+        System.out.println("En que posicion se va a amarrar? ");
         int posicion = leer.nextInt();        
-        System.out.println("Para que tipo de barco desea alquilar? ");
+        System.out.println("Para que tipo de embarcación desea alquilar el espacio? ");
         System.out.println("1. Barco");
         System.out.println("2. Barco motor");
         System.out.println("3. Velero");
