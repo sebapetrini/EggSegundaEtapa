@@ -121,12 +121,12 @@ Este resultado nos dará la posición del candado (1, 2, 3 o 4) "1"*/
 SELECT COUNT(*)/(SELECT COUNT(*) FROM jugadores ju WHERE ju.Peso >= 195 ) + 0.9945 FROM jugadores j JOIN equipos e on e.Nombre = j.Nombre_equipo WHERE j.Procedencia = 'Michigan' and e.Conferencia = 'west';
 
 /*
-Clave: La clave del candado B estará con formada por la/s siguientes consulta/s a la base de datos: "1038"
+Clave: La clave del candado C estará con formada por la/s siguientes consulta/s a la base de datos: "631"
 Para obtener el siguiente código deberás redondear hacia abajo el resultado que se devuelve de sumar:
 el promedio de puntos por partido, el conteo de asistencias por partido, y la suma de
 tapones por partido. Además, este resultado debe ser, donde la división sea central.
 */
-SELECT floor(avg(est.Puntos_por_partido)+sum(est.asistencias_por_partido)+sum(est.tapones_por_partido)) FROM estadisticas est JOIN jugadores j on est.jugador=j.codigo JOIN equipos eq on j.Nombre_equipo=eq.Nombre WHERE eq.Division='Central';
+SELECT floor(avg(est.Puntos_por_partido)+count(est.asistencias_por_partido)+sum(est.tapones_por_partido)) FROM estadisticas est JOIN jugadores j on est.jugador=j.codigo JOIN equipos eq on j.Nombre_equipo=eq.Nombre WHERE eq.Division='Central';
 
 /*
 CANDADO D

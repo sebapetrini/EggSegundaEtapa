@@ -1,0 +1,38 @@
+h1{
+    color: cornflowerblue;
+
+}
+h2{
+    color: blue;
+}
+a{
+    color: red;
+}
+em{
+    color: blue;
+}
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td{
+    color: rgb(101, 160, 1);
+}
+th{
+    color: red;
+}
+#especial2{
+    color: purple;
+}
+#especial{
+    color: goldenrod;
+}
+#destacado{
+    color: goldenrod;
+}
+#don{
+    color: rgb(5, 76, 78);
+}
+#adicional{
+    color: darkolivegreen;
+}

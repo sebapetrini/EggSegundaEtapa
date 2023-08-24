@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!--Por último, vamos a crear un formulario para registrar un usuario que se vea de la
+siguiente manera:
+Es importante que en las casillas de sexo del usuario se puede clickear la/s palabra/s
+hombre, mujer o prefiero no decir para seleccionar la opción. Recordemos que eso lo
+podemos hacer con la etiqueta label.-->
+
+<body>
+    <h1>Registrar un Usuario</h1>
+    <label>Nombre del Usuario</label>
+    <input type="text" name="nombre">
+    <br>
+    <br>
+    <label>Contraseña del Usuario</label>
+    <input type="password">
+    <br>
+    <br>
+    <label>Edad del Usuario</label>
+    <input type="number">        
+    <br>
+    <br>
+    <label>Fecha de nacimiento del Usuario</label>
+    <input type="date">
+    <br>
+    <br>   
+    <label>Sexo del Usuario</label>
+    <br>
+    <input type="radio" name="sexo" value="1">Hombre
+    <br>
+    <input type="radio" name="sexo" value="2">Mujer
+    <br>
+    <input type="radio" name="sexo" value="3">Prefiero no decir
+    <br>
+    <br>
+    <label>Pais de nacimiento del Usuario</label>
+    <br>
+    <select name="pais">
+        <option>Argentina</option>
+        <option>Brasil</option>
+        <option>Chile</option>
+        <option>Colombia</option>
+        <option>Paraguay</option>
+        <option>Uruguay</option>
+        <option>Perú</option>
+        <option>Costa Rica</option>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Enviar</button>
+    <button type="reset">Borrar</button>
+</body>
+</html>

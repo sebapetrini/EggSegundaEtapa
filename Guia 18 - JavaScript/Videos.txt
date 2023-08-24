@@ -1,0 +1,10 @@
+Introduccion JavaScript
+https://www.youtube.com/playlist?list=PLgwlfcqa5h3yfZ6XIPhUo2VBzJarJk1y3
+Eventos I | Programación | DOM | Javascript 
+https://www.youtube.com/watch?v=tNVZ3wjtnYw&list=PLgwlfcqa5h3xj_IP0PrLMQBr8ujn2-AbX&ab_channel=EggLive
+Fetch GET | Programación | Comunicacion y Persistencia | Javascript 
+https://www.youtube.com/watch?v=BlymvIENiqg&list=PLgwlfcqa5h3y8CaKiY7HbjAIQST4_-Q9X&ab_channel=EggLive
+Videos Funciones
+https://www.youtube.com/watch?v=KFMbtcXffLo&list=PLgwlfcqa5h3wSQmYW6AT2UlitOkinkAf8&ab_channel=EggLive
+Scope | Programación | Condicionales y Bucles | Javascript
+https://www.youtube.com/watch?v=GFfieKxRxO0&list=PLgwlfcqa5h3zmcbq6BiSo7FoAPq6Mgj9I&ab_channel=EggLive

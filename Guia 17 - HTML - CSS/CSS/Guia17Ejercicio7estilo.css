@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(252, 207, 149);
+}
+h1{
+    color: blueviolet;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+h2{
+    color: rgb(228, 253, 3);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+p{
+    color: rgb(41, 3, 253);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: left;
+}
