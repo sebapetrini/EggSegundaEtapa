@@ -1,0 +1,20 @@
+.cardWinner{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+    margin: auto;
+    z-index: 2;
+    top: 50%;
+}
+
+.win{
+    position: absolute;
+    display: flex;
+    place-content: center;
+    width: 592px;
+    height: 610px;
+    background-color: rgba(0, 0, 0, 0.514);
+}

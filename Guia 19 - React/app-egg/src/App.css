@@ -1,0 +1,75 @@
+#root{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(253, 202, 60);
+
+}
+
+.icono-header{
+    height: 50px;
+    width: 50px;
+}
+
+.footer{
+    border-top: 1px solid rgb(253, 202, 60);
+    height: 50px;
+    text-align: center;
+}
+
+.productos{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.producto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: start;
+
+}
+
+.producto .info{
+    width: 400px ;
+}
+
+.producto img{
+    width: 150px;
+    height: 150px;
+}
+
+.producto .megusta{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.producto .nomegusta{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.detalle{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.detalle img{
+    width: 40%;
+    height: 300px;
+}

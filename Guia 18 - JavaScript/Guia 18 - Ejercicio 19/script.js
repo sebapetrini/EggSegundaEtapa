@@ -29,7 +29,7 @@ for(let i = 0; i < 20; i++) {
         vector2[i] = 0.5;
     }
 }
-
+/*vector2 = vector1.slice(0,9)*/
 
 
 alert(`

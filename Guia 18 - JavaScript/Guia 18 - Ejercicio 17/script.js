@@ -21,3 +21,9 @@ alert(`
 Vector entero = ${vector1}
 Vector sin los dos ultimos numero = ${modificarVector()} 
 `)
+
+
+/*
+vector1.splice(vector1.length-1);
+vector2.splice(vector2.length-1);
+*/

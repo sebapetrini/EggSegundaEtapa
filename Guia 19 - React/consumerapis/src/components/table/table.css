@@ -1,0 +1,12 @@
+.table{
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    gap: 10px;
+    border: 1px solid black;
+    background-color: blue;
+    padding: 5px;
+    margin: auto;
+    z-index: 1;
+}
+

@@ -11,10 +11,9 @@ boton.addEventListener("click", function () {
     let aux = "";
     let palabrasResaltadas = [];
     let texto = parrafo.textContent;
-
     for (let i = 0; i < texto.length; i++) {
 
-        if (texto[i] !== " ") {
+        if (texto[i] !== " " && texto[i] !== "," && texto[i] !== ".") {
             aux += texto[i];
         } else if (aux.length > 8) {
             palabrasResaltadas.push(aux);
@@ -25,8 +24,8 @@ boton.addEventListener("click", function () {
     }
 
     for (let i = 0; i < palabrasResaltadas.length; i++) {
-        texto = texto.replace(palabrasResaltadas[i], '<span style="background-color: yellow;">' + palabrasResaltadas[i] + '</span>');
+        texto = texto.replaceAll(palabrasResaltadas[i], '<span style="background-color: yellow;">' + palabrasResaltadas[i] + '</span>');
     }
-
+  
     parrafo.innerHTML = texto;
 });

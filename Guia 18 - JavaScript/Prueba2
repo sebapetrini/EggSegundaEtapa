@@ -1,0 +1,217 @@
+{
+    "area_archivo": "65925d78-6b9e-45ff-9223-455572936435",
+    "autorizacion": {
+        "nivel": "basica",
+        "historial": [],
+        "autorizantes": [
+            {
+                "nivel": "basica",
+                "timestamp": 1690896644959,
+                "autorizado": false,
+                "id_usuario_sso": "ccaggiano",
+                "id_usuario_sudocu": "494e975a-696b-4357-9f63-c4f7ddb10af6",
+                "nivel_firma_seleccionado": "basica"
+            }
+        ]
+    },
+    "autorizantes": [
+        {
+            "id": "494e975a-696b-4357-9f63-c4f7ddb10af6",
+            "dni": "21387421",
+            "email": "ccaggiano@iupa.edu.ar",
+            "creado": "2022-09-19T15:25:46.793Z",
+            "cuenta": [
+                {
+                    "id": "79e52b54-75c7-470f-b692-65940d156401",
+                    "ts": "2022-10-17T11:48:20.136Z",
+                    "dni": "null",
+                    "idp": "saml",
+                    "nota": "null",
+                    "email": "ccaggiano@iupa.edu.ar",
+                    "nombre": "null",
+                    "apellido": "null",
+                    "fecha_alta": "2022-10-17T11:48:20.136Z",
+                    "habilitado": "1",
+                    "habilitado_por": "null",
+                    "id_usuario_idp": "ccaggiano",
+                    "fecha_habilitado": "null",
+                    "id_usuario_sudocu": "494e975a-696b-4357-9f63-c4f7ddb10af6",
+                    "fecha_ultimo_acceso": "2023-07-31T12:57:00.425Z"
+                }
+            ],
+            "nombre": "Carlos Rubén",
+            "apellido": "Caggiano",
+            "permisos": {
+                "modulos": {
+                    "mpc": {
+                        "componentes": [
+                            {
+                                "id": "usuarios",
+                                "activo": "false",
+                                "etiqueta": "Usuarios"
+                            },
+                            {
+                                "id": "contenedores",
+                                "activo": "false",
+                                "etiqueta": "Carpetas"
+                            },
+                            {
+                                "id": "areas",
+                                "activo": "false",
+                                "etiqueta": "Areas"
+                            },
+                            {
+                                "id": "personas",
+                                "activo": "false",
+                                "etiqueta": "Personas"
+                            },
+                            {
+                                "id": "roles",
+                                "activo": "false",
+                                "etiqueta": "Roles"
+                            },
+                            {
+                                "id": "templates_pdf",
+                                "activo": "false",
+                                "etiqueta": "Templates PDF"
+                            },
+                            {
+                                "id": "templates_doc",
+                                "activo": "false",
+                                "etiqueta": "Templates Documentos"
+                            },
+                            {
+                                "id": "numeradores",
+                                "activo": "false",
+                                "etiqueta": "Numeradores"
+                            },
+                            {
+                                "id": "tipos_documento",
+                                "activo": "false",
+                                "etiqueta": "Tipos Documento"
+                            },
+                            {
+                                "id": "sistema",
+                                "activo": "false",
+                                "etiqueta": "Sistema"
+                            },
+                            {
+                                "id": "importador",
+                                "activo": "false",
+                                "etiqueta": "Importador"
+                            },
+                            {
+                                "id": "reportes",
+                                "activo": "false",
+                                "etiqueta": "Reportes"
+                            },
+                            {
+                                "id": "rutas",
+                                "activo": "false",
+                                "etiqueta": "Rutas"
+                            }
+                        ]
+                    },
+                    "gestion": {
+                        "documentos": [
+                            {
+                                "id": "recaratular",
+                                "activo": "false",
+                                "etiqueta": "Recaratular"
+                            },
+                            {
+                                "id": "numerar",
+                                "activo": "true",
+                                "etiqueta": "Numerar"
+                            },
+                            {
+                                "id": "visibilidad",
+                                "activo": "false",
+                                "etiqueta": "Visibilidad"
+                            }
+                        ],
+                        "expedientes": [
+                            {
+                                "id": "recaratular",
+                                "activo": "false",
+                                "etiqueta": "Recaratular"
+                            },
+                            {
+                                "id": "numerar",
+                                "activo": "true",
+                                "etiqueta": "Numerar"
+                            },
+                            {
+                                "id": "visibilidad",
+                                "activo": "false",
+                                "etiqueta": "Visibilidad"
+                            },
+                            {
+                                "id": "reservados",
+                                "activo": "true",
+                                "etiqueta": "Reservados"
+                            },
+                            {
+                                "id": "incorporar_expedientes",
+                                "activo": "false",
+                                "etiqueta": "Incorporar expediente a expediente"
+                            }
+                        ]
+                    }
+                },
+                "componentes": {
+                    "areas": "false",
+                    "roles": "false",
+                    "sistema": "false",
+                    "personas": "false",
+                    "usuarios": "false",
+                    "importador": "false",
+                    "numeradores": "false",
+                    "contenedores": "false",
+                    "templates_doc": "false",
+                    "templates_pdf": "false",
+                    "tipos_documento": "false"
+                },
+                "herramientas": {
+                    "mapa": "true",
+                    "abrir": "true",
+                    "anular": "true",
+                    "cerrar": "true",
+                    "copiar": "true",
+                    "remitir": "true",
+                    "archivar": "true",
+                    "eliminar": "true",
+                    "publicar": "true",
+                    "reenviar": "true",
+                    "compartir": "true",
+                    "modificar": "true",
+                    "corresponde": "true",
+                    "desarchivar": "true",
+                    "transformar": "true",
+                    "vista_previa": "true",
+                    "cancelar_envio": "true",
+                    "vista_avanzada": "true",
+                    "agregar_persona": "true",
+                    "descargar_expediente": "true"
+                }
+            },
+            "username": "ccaggiano@iupa.edu.ar",
+            "eliminado": "false",
+            "nivel_firma": {
+                "basica": "true"
+            },
+            "ultimo_acceso": "2023-07-31T12:57:00.503Z",
+            "nombre_apellido": "Carlos Rubén Caggiano"
+        }
+    ],
+    "incorporacion": {
+        "id": 155548,
+        "ts": "2023-08-01T13:30:44.984Z",
+        "estado": 2,
+        "atributos": {},
+        "id_documento": "ad4e3cfb-d848-4fcc-9701-bcc76dc7c408",
+        "id_tipo_relacion": 10,
+        "id_relacion_pendiente": 155548,
+        "id_documento_relacionado": "3f56020a-0312-4ef4-9e67-ff9eb10b4202"
+    }
+}

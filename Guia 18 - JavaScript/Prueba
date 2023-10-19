@@ -1,0 +1,210 @@
+{
+    "area_archivo": "748a3064-b46b-41dc-b109-04bb79eec73e",
+    "autorizacion": {
+        "nivel": "basica",
+        "historial": [],
+        "autorizantes": [
+            {
+                
+                "nivel": "basica",
+                "timestamp": 1693493444474,
+                "autorizado": false,
+                "id_usuario_sso": "apozzi",
+                "id_usuario_sudocu": "38ce64df-be2f-46ad-a6e1-901da6dac47f",
+                "nivel_firma_seleccionado": "basica"
+            }
+        ]
+    },
+    "autorizantes": [
+        {
+            "id": "38ce64df-be2f-46ad-a6e1-901da6dac47f",
+            "dni": "39075462",
+            "email": "apozzi@iupa.edu.ar",
+            "creado": "2022-09-19T14:47:34.973Z",
+            "cuenta": [
+                {
+                    "id": "913b4d85-7722-4306-81c2-777f64d42956",
+                    "ts": "2022-10-17T11:50:18.534Z",
+                    "dni": null,
+                    "idp": "saml",
+                    "nota": null,
+                    "email": "apozzi@iupa.edu.ar",
+                    "nombre": null,
+                    "apellido": null,
+                    "fecha_alta": "2022-10-17T11:50:18.534Z",
+                    "habilitado": 1,
+                    "habilitado_por": null,
+                    "id_usuario_idp": "apozzi",
+                    "fecha_habilitado": null,
+                    "id_usuario_sudocu": "38ce64df-be2f-46ad-a6e1-901da6dac47f",
+                    "fecha_ultimo_acceso": "2023-08-30T13:06:31.542Z"
+                }
+            ],
+            "nombre": "Antonella",
+            "apellido": "Pozzi",
+            "permisos": {
+                "modulos": {
+                    "mpc": {
+                        "componentes": [
+                            {
+                                "id": "usuarios",
+                                "activo": false,
+                                "etiqueta": "Usuarios"
+                            },
+                            {
+                                "id": "contenedores",
+                                "activo": false,
+                                "etiqueta": "Carpetas"
+                            },
+                            {
+                                "id": "areas",
+                                "activo": false,
+                                "etiqueta": "Areas"
+                            },
+                            {
+                                "id": "personas",
+                                "activo": false,
+                                "etiqueta": "Personas"
+                            },
+                            {
+                                "id": "roles",
+                                "activo": false,
+                                "etiqueta": "Roles"
+                            },
+                            {
+                                "id": "templates_pdf",
+                                "activo": false,
+                                "etiqueta": "Templates PDF"
+                            },
+                            {
+                                "id": "templates_doc",
+                                "activo": false,
+                                "etiqueta": "Templates Documentos"
+                            },
+                            {
+                                "id": "numeradores",
+                                "activo": false,
+                                "etiqueta": "Numeradores"
+                            },
+                            {
+                                "id": "tipos_documento",
+                                "activo": false,
+                                "etiqueta": "Tipos Documento"
+                            },
+                            {
+                                "id": "sistema",
+                                "activo": false,
+                                "etiqueta": "Sistema"
+                            },
+                            {
+                                "id": "importador",
+                                "activo": false,
+                                "etiqueta": "Importador"
+                            },
+                            {
+                                "id": "reportes",
+                                "activo": false,
+                                "etiqueta": "Reportes"
+                            },
+                            {
+                                "id": "rutas",
+                                "activo": false,
+                                "etiqueta": "Rutas"
+                            }
+                        ]
+                    },
+                    "gestion": {
+                        "documentos": [
+                            {
+                                "id": "recaratular",
+                                "activo": false,
+                                "etiqueta": "Recaratular"
+                            },
+                            {
+                                "id": "numerar",
+                                "activo": false,
+                                "etiqueta": "Numerar"
+                            },
+                            {
+                                "id": "visibilidad",
+                                "activo": false,
+                                "etiqueta": "Visibilidad"
+                            }
+                        ],
+                        "expedientes": [
+                            {
+                                "id": "recaratular",
+                                "activo": false,
+                                "etiqueta": "Recaratular"
+                            },
+                            {
+                                "id": "numerar",
+                                "activo": false,
+                                "etiqueta": "Numerar"
+                            },
+                            {
+                                "id": "visibilidad",
+                                "activo": false,
+                                "etiqueta": "Visibilidad"
+                            },
+                            {
+                                "id": "reservados",
+                                "activo": false,
+                                "etiqueta": "Reservados"
+                            },
+                            {
+                                "id": "incorporar_expedientes",
+                                "activo": false,
+                                "etiqueta": "Incorporar expediente a expediente"
+                            }
+                        ]
+                    }
+                },
+                "componentes": {
+                    "areas": false,
+                    "roles": false,
+                    "sistema": false,
+                    "personas": false,
+                    "usuarios": false,
+                    "importador": false,
+                    "numeradores": false,
+                    "contenedores": false,
+                    "templates_doc": false,
+                    "templates_pdf": false,
+                    "tipos_documento": false
+                },
+                "herramientas": {
+                    "mapa": true,
+                    "abrir": true,
+                    "anular": true,
+                    "cerrar": true,
+                    "copiar": true,
+                    "remitir": true,
+                    "archivar": true,
+                    "eliminar": true,
+                    "publicar": true,
+                    "reenviar": true,
+                    "compartir": true,
+                    "modificar": true,
+                    "corresponde": true,
+                    "desarchivar": true,
+                    "transformar": true,
+                    "vista_previa": true,
+                    "cancelar_envio": true,
+                    "vista_avanzada": true,
+                    "agregar_persona": true,
+                    "descargar_expediente": true
+                }
+            },
+            "username": "apozzi@iupa.edu.ar",
+            "eliminado": false,
+            "nivel_firma": {
+                "basica": true
+            },
+            "ultimo_acceso": "2023-08-30T13:06:31.560Z",
+            "nombre_apellido": "Antonella Pozzi",
+            "nivel_firma_seleccionado": "basica"
+        }
+    ],
+    "incorporacion": {}
+}
