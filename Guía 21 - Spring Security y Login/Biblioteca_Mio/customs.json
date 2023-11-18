@@ -1,0 +1,12 @@
+{
+    "elements": {},
+    "attributes": {
+        "th:if": {},
+        "th:text": {},
+        "sec:authorize": {},
+        "th:replace": {
+            "context": "nav"
+        },
+        "th:href": {}
+    }
+}
