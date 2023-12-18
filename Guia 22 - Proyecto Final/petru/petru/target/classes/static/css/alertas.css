@@ -1,0 +1,143 @@
+@keyframes alert-in {
+    0% {
+        transform: translateX(30rem);
+    }
+
+    90% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        transform: translateX(0rem);
+    }
+}
+
+@keyframes alert-out {
+    0% {
+        transform: translateX(0rem);
+    }
+
+    100% {
+        transform: translateX(30rem);
+    }
+}
+
+#alertas .exito {
+    z-index: 999;
+    position: fixed;
+
+    right: 1%;
+    bottom: 1rem;
+
+    min-width: 10rem;
+    max-width: 30rem;
+    min-height: 3rem;
+
+    background: rgb(20, 165, 20);
+    color: white;
+    padding: .5rem;
+    border-radius: .5rem;
+
+    display: flex;
+    flex-direction: column;
+
+    animation: alert-in .8s ease-in-out 0s 1 normal forwards;
+}
+
+#alertas .exito-hide {
+    animation: alert-out .8s ease-in-out 0s 1 normal forwards;
+}
+
+#alertas .exito[hidden] {
+    display: none;
+}
+
+#alertas .exito .titulo {
+    font-size: 1.3rem;
+    margin: 0 5% 0 8%;
+    user-select: none;
+}
+
+#alertas .exito .divider {
+    height: 1px;
+    margin: .3rem 5% .3rem 5%;
+    width: 90%;
+    background: white;
+}
+
+#alertas .exito .informacion {
+    width: 80%;
+    margin: .2rem 10% 1rem 10%;
+}
+
+#alertas .error {
+    z-index: 999;
+    position: fixed;
+
+    right: 1%;
+    bottom: 1rem;
+
+    min-width: 10rem;
+    max-width: 30rem;
+    min-height: 3rem;
+
+    background: rgb(255, 42, 42);
+    color: white;
+    padding: .5rem;
+    border-radius: .5rem;
+
+    display: flex;
+    align-items: center;
+
+    animation: alert-in .8s ease-in-out 0s 1 normal forwards;
+}
+
+#alertas .error-hide {
+    animation: alert-out .8s ease-in-out 0s 1 normal forwards;
+}
+
+#alertas .error[hidden] {
+    display: none;
+}
+
+#alertas .error .detalles {
+    display: flex;
+    width: calc(100% - 40px);
+    flex-direction: column;
+}
+
+#alertas .error .titulo {
+    font-size: 1.3rem;
+    margin: 0 5% 0 8%;
+    user-select: none;
+}
+
+#alertas .error .divider {
+    height: 1px;
+    margin: .3rem 5% .3rem 5%;
+    width: 90%;
+    background: white;
+}
+
+#alertas .error .informacion {
+    width: 80%;
+    margin: .2rem 10% 1rem 10%;
+}
+
+#alertas .error>:nth-child(2) {
+    display: flex;
+    width: 40px;
+    align-items: center;
+}
+
+#alertas .error .salir {
+    position: absolute;
+    right: 0;
+    margin: 0 .8rem 0 .8rem;
+    transition: filter .4s;
+}
+
+#alertas .error .salir:hover {
+    filter: brightness(50%);
+    cursor: pointer;
+}

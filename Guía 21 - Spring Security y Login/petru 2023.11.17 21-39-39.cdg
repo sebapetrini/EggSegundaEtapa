@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="petru">
+  <ClassDiagramComponents>
+    <Class name="Etiqueta" package="com.grupop.petru.entidades" visibility="public" xPosition="40.0" yPosition="420.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="color" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Evento" package="com.grupop.petru.entidades" visibility="public" xPosition="214.0" yPosition="420.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="fecha" type="Date" visibility="private"/>
+        <Field name="link" type="String" visibility="private"/>
+        <Field name="proyecto" type="Proyecto" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Imagen" package="com.grupop.petru.entidades" visibility="public" xPosition="492.0" yPosition="290.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="tipo" type="String" visibility="private"/>
+        <Field name="contenido" type="byte[]" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Proyecto" package="com.grupop.petru.entidades" visibility="public" xPosition="276.0" yPosition="172.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="imagen" type="Imagen" visibility="private"/>
+        <Field name="usuarios" type="List&lt;Usuario&gt;" visibility="private"/>
+        <Field name="visibilidad" type="Visibilidad" visibility="private"/>
+        <Field name="notas" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Tarea" package="com.grupop.petru.entidades" visibility="public" xPosition="36.0" yPosition="205.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="proyecto" type="Proyecto" visibility="private"/>
+        <Field name="tipoTarea" type="TipoTarea" visibility="private"/>
+        <Field name="etiquetas" type="List&lt;Etiqueta&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Usuario" package="com.grupop.petru.entidades" visibility="public" xPosition="492.0" yPosition="25.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="clave" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="telefono" type="Long" visibility="private"/>
+        <Field name="imagen" type="Imagen" visibility="private"/>
+        <Field name="rol" type="Rol" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="Rol" package="com.grupop.petru.enums" visibility="public" xPosition="276.0" yPosition="25.0">
+      <Literals>
+        <Literal name="CLIENTE"/>
+        <Literal name="COLABORADOR"/>
+        <Literal name="ADMIN"/>
+      </Literals>
+    </Enum>
+    <Enum name="TipoTarea" package="com.grupop.petru.enums" visibility="public" xPosition="40.0" yPosition="25.0">
+      <Literals>
+        <Literal name="TODO"/>
+        <Literal name="DOING"/>
+        <Literal name="DONE"/>
+      </Literals>
+    </Enum>
+    <Enum name="Visibilidad" package="com.grupop.petru.enums" visibility="public" xPosition="391.0" yPosition="483.0">
+      <Literals>
+        <Literal name="PRIVADO"/>
+        <Literal name="GRUPO"/>
+        <Literal name="PUBLICO"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="imagen" source="com.grupop.petru.entidades.Usuario" target="com.grupop.petru.entidades.Imagen" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="visibilidad" source="com.grupop.petru.entidades.Proyecto" target="com.grupop.petru.enums.Visibilidad" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="imagen" source="com.grupop.petru.entidades.Proyecto" target="com.grupop.petru.entidades.Imagen" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="rol" source="com.grupop.petru.entidades.Usuario" target="com.grupop.petru.enums.Rol" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="etiquetas" source="com.grupop.petru.entidades.Tarea" target="com.grupop.petru.entidades.Etiqueta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Etiqueta&gt;"/>
+    <HasRelation name="tipoTarea" source="com.grupop.petru.entidades.Tarea" target="com.grupop.petru.enums.TipoTarea" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarios" source="com.grupop.petru.entidades.Proyecto" target="com.grupop.petru.entidades.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Usuario&gt;"/>
+    <HasRelation name="proyecto" source="com.grupop.petru.entidades.Tarea" target="com.grupop.petru.entidades.Proyecto" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="proyecto" source="com.grupop.petru.entidades.Evento" target="com.grupop.petru.entidades.Proyecto" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <title>Proyecto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/proyecto.css">
+</head>
+
+<body>
+    <nav th:replace="fragments/navbar.html :: nav"></nav>
+
+    <main style="position: relative; margin: 0;">
+        <div>
+            <h1 th:text="${proyecto.nombre}" style="text-align: center;"></h1>
+            <div class="usuarios">
+                <div>
+                    <div class="image" th:each="usuario : ${proyecto.usuarios}">
+                        <img th:src="@{/imagen/__${usuario.imagen.id}__}"
+                            th:email="${usuario.id != usuariosession.id ? usuario.email : null}">
+                        <svg th:if="${usuario.rol.name() == 'COLABORADOR'}" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 15c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4M8 9a4 4 0 0 0 4 4a4 4 0 0 0 4-4m-4.5-7c-.3 0-.5.21-.5.5v3h-1V3s-2.25.86-2.25 3.75c0 0-.75.14-.75 1.25h10c-.05-1.11-.75-1.25-.75-1.25C16.25 3.86 14 3 14 3v2.5h-1v-3c0-.29-.19-.5-.5-.5h-1Z" />
+                        </svg>
+                        <svg th:if="${usuario.rol.name() == 'VISITA' || usuario.rol.name() == 'CLIENTE'}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z" />
+                        </svg>
+                        <svg th:if="${usuario.rol.name() == 'ADMIN'}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5Zm0 3.9a3 3 0 1 1-3 3a3 3 0 0 1 3-3Zm0 7.9c2 0 6 1.09 6 3.08a7.2 7.2 0 0 1-12 0c0-1.99 4-3.08 6-3.08Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div id="agregar-usuario" sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR', 'CLIENTE')}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+                    </svg>
+                    <form hidden th:action="@{/proyecto/__${proyecto.id}__/invitar}" method="POST">
+                        <input type="email" name="email" placeholder="Email del usuario" autocomplete="off">
+                        <button type="submit">✔</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="proyecto" th:proyecto="${proyecto.id}" th:rol="${usuariosession.rol.name()}">
+            <div class="calendario" style="width: 80%; height: 80%; overflow-y: auto">
+                <div th:replace="fragments/calendario.html :: div"></div>
+            </div>
+            <div class="contenedor">
+                <div class="pendientes">
+                    <span class="tipo">Pendientes</span>
+                    <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'TODO'}"
+                        th:tarea="${tarea.id}"
+                        th:draggable="${usuariosession.rol.name() != 'CLIENTE' && usuariosession.rol.name() != 'VISITA'}"
+                        ondragstart="dragStart(event)">
+                        <div>
+                            <div style="display: flex;">
+                                <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
+                                    th:style="${'transition: border .4s; border: 1px solid ' + etiqueta.color + '; border-radius: .2rem; margin: 0 .3rem .2rem .3rem; height: 6px; width: 15px; background: ' + etiqueta.color}">
+                                    <span hidden class="tooltip" th:text="${etiqueta.nombre}"></span>
+                                </div>
+                            </div>
+                            <span class="titulo" th:text="${tarea.nombre}"></span>
+                        </div>
+                        <svg sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}" class="pencil hidden"
+                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="m14.06 9l.94.94L5.92 19H5v-.92L14.06 9m3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z" />
+                        </svg>
+                        <svg sec:authorize="${hasAnyRole('CLIENTE')}" class="list hidden"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M7 9V7h14v2H7Zm0 4v-2h14v2H7Zm0 4v-2h14v2H7ZM4 9q-.425 0-.712-.288T3 8q0-.425.288-.712T4 7q.425 0 .713.288T5 8q0 .425-.288.713T4 9Zm0 4q-.425 0-.712-.288T3 12q0-.425.288-.712T4 11q.425 0 .713.288T5 12q0 .425-.288.713T4 13Zm0 4q-.425 0-.712-.288T3 16q0-.425.288-.712T4 15q.425 0 .713.288T5 16q0 .425-.288.713T4 17Z" />
+                        </svg>
+                    </div>
+                    <div sec:authorize="${hasAnyRole('CLIENTE', 'ADMIN', 'COLABORADOR')}" class="agregar"
+                        th:tarea="${proyecto.id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="haciendo">
+                    <span class="tipo">En Proceso</span>
+                    <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DOING'}"
+                        th:tarea="${tarea.id}"
+                        th:draggable="${usuariosession.rol.name() != 'CLIENTE' && usuariosession.rol.name() != 'VISITA'}"
+                        ondragstart="dragStart(event)">
+                        <div>
+                            <div style="display: flex;">
+                                <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
+                                    th:style="${'transition: border .4s; border: 1px solid ' + etiqueta.color + '; border-radius: .2rem; margin: 0 .3rem .2rem .3rem; height: 6px; width: 15px; background: ' + etiqueta.color}">
+                                    <span hidden class="tooltip" th:text="${etiqueta.nombre}"></span>
+                                </div>
+                            </div>
+                            <span class="titulo" th:text="${tarea.nombre}"></span>
+                        </div>
+                        <svg sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}" class="pencil hidden"
+                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="m14.06 9l.94.94L5.92 19H5v-.92L14.06 9m3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z" />
+                        </svg>
+                        <svg sec:authorize="${hasAnyRole('CLIENTE')}" class="list hidden"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M7 9V7h14v2H7Zm0 4v-2h14v2H7Zm0 4v-2h14v2H7ZM4 9q-.425 0-.712-.288T3 8q0-.425.288-.712T4 7q.425 0 .713.288T5 8q0 .425-.288.713T4 9Zm0 4q-.425 0-.712-.288T3 12q0-.425.288-.712T4 11q.425 0 .713.288T5 12q0 .425-.288.713T4 13Zm0 4q-.425 0-.712-.288T3 16q0-.425.288-.712T4 15q.425 0 .713.288T5 16q0 .425-.288.713T4 17Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hechas">
+                    <span class="tipo">Finalizados</span>
+                    <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DONE'}"
+                        th:tarea="${tarea.id}"
+                        th:draggable="${usuariosession.rol.name() != 'CLIENTE' && usuariosession.rol.name() != 'VISITA'}"
+                        ondragstart="dragStart(event)">
+                        <div>
+                            <div style="display: flex;">
+                                <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
+                                    th:style="${'transition: border .4s; border: 1px solid ' + etiqueta.color + '; border-radius: .2rem; margin: 0 .3rem .2rem .3rem; height: 6px; width: 15px; background: ' + etiqueta.color}">
+                                    <span hidden class="tooltip" th:text="${etiqueta.nombre}"></span>
+                                </div>
+                            </div>
+                            <span class="titulo" th:text="${tarea.nombre}"></span>
+                        </div>
+                        <svg sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}" class="pencil hidden"
+                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="m14.06 9l.94.94L5.92 19H5v-.92L14.06 9m3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z" />
+                        </svg>
+                        <svg sec:authorize="${hasAnyRole('CLIENTE')}" class="list hidden"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M7 9V7h14v2H7Zm0 4v-2h14v2H7Zm0 4v-2h14v2H7ZM4 9q-.425 0-.712-.288T3 8q0-.425.288-.712T4 7q.425 0 .713.288T5 8q0 .425-.288.713T4 9Zm0 4q-.425 0-.712-.288T3 12q0-.425.288-.712T4 11q.425 0 .713.288T5 12q0 .425-.288.713T4 13Zm0 4q-.425 0-.712-.288T3 16q0-.425.288-.712T4 15q.425 0 .713.288T5 16q0 .425-.288.713T4 17Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div hidden class="fondo">
+                <div class="ventana">
+                    <div class="tarea-ventana" hidden th:each="tarea : ${tareas}" th:id="${tarea.id}">
+                        <div class="cambiar-nombre">
+                            <form th:action="@{/tarea/modificar-nombre/__${tarea.id}__}" method="POST">
+                                <input sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}" type="text" name="nombre"
+                                    th:value="${tarea.nombre}" autocomplete="off">
+                                <input sec:authorize="${hasAnyRole('CLIENTE')}" disabled type="text" name="nombre"
+                                    th:value="${tarea.nombre}" autocomplete="off">
+                                <button sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}" type="submit">✔</button>
+                            </form>
+                            <div class="comentarios">
+                                <div class="agregar-comentario" th:if="${usuariosession != null}">
+                                    <div class="usuario">
+                                        <img th:src="@{/imagen/__${usuariosession.imagen.id}__}" width="24px"
+                                            height="24px" alt="">
+                                        <span class="nombre" th:text="${usuariosession.nombre}"></span>
+                                    </div>
+                                    <div class="contenido">
+                                        <form th:action="@{/comentario/registro}" method="POST">
+                                            <input hidden type="text" name="idTarea" th:value="${tarea.id}">
+                                            <input hidden type="text" name="idUsuario" th:value="${usuariosession.id}">
+                                            <textarea name="contenido" placeholder="Agregar comentario..."></textarea>
+                                            <button type="submit">✔</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="divider" th:if="${usuariosession != null}"></div>
+                                <div class="comentario" th:each="comentario : ${tarea.comentarios}">
+                                    <div class="usuario">
+                                        <img th:src="@{/imagen/__${comentario.usuario.imagen.id}__}" width="24px"
+                                            height="24px" alt="">
+                                        <input disabled type="text" class="nombre"
+                                            th:value="${comentario.usuario.nombre}"></input>
+                                        <span class="fecha"
+                                            th:text="${comentario.fecha.date + '/' + (comentario.fecha.month + 1) + '/' + (comentario.fecha.year + 1900)}"></span>
+                                        <svg th:if="${usuariosession.id == comentario.usuario.id || usuariosession.rol.name() == 'ADMIN'}"
+                                            th:comentario="${comentario.id}" class="borrar"
+                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 256 256">
+                                            <path fill="currentColor"
+                                                d="M216 48h-40v-8a24 24 0 0 0-24-24h-48a24 24 0 0 0-24 24v8H40a8 8 0 0 0 0 16h8v144a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16V64h8a8 8 0 0 0 0-16ZM96 40a8 8 0 0 1 8-8h48a8 8 0 0 1 8 8v8H96Zm96 168H64V64h128Zm-80-104v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Zm48 0v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="contenido">
+                                        <span th:text="${comentario.contenido}"></span>
+                                    </div>
+                                </div>
+                                <div class="comentario" style="text-align: center; padding: 1rem 0 1rem 0;"
+                                    th:if="${tarea.comentarios == null}">
+                                    No hay comentarios
+                                </div>
+                            </div>
+                        </div>
+                        <div class="etiquetas">
+                            <span class="titulo">Etiquetas</span>
+                            <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
+                                th:style="${'background:' + etiqueta.color}">
+                                <span th:text="${etiqueta.nombre}"></span>
+                            </div>
+                            <div class="agregar" sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}"
+                                th:tarea="${tarea.id}" th:if="${tarea.etiquetas == null || tarea.etiquetas.size() < 3}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <svg class="salir" onclick="ventanaProExit()" xmlns="http://www.w3.org/2000/svg" width="32"
+                            height="32" viewBox="0 0 15 15">
+                            <path fill="currentColor" fill-rule="evenodd"
+                                d="M11.782 4.032a.575.575 0 1 0-.813-.814L7.5 6.687L4.032 3.218a.575.575 0 0 0-.814.814L6.687 7.5l-3.469 3.468a.575.575 0 0 0 .814.814L7.5 8.313l3.469 3.469a.575.575 0 0 0 .813-.814L8.313 7.5l3.469-3.468Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <alert th:replace="fragments/alertas.html"></alert>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+
+    <script src="/js/proyecto.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

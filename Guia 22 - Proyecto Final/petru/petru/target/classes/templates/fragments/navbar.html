@@ -1,0 +1,248 @@
+<nav id="navbar">
+    <!-- CSS de la navbar -->
+    <link rel="stylesheet" href="/css/navbar.css">
+    <div class="window"></div>
+
+    <div class="home-list">
+        <div class="home" th:redirect="${usuariosession != null}?@{'/inicio'} : @{'/'}">
+            <div class="box">
+                P
+            </div>
+            <div class="box">
+                E
+            </div>
+            <div class="box">
+                T
+            </div>
+            <div class="box">
+                R
+            </div>
+            <div class="box">
+                U
+            </div>
+        </div>
+        <div hidden th:class="${usuariosession != null} ? 'home dropdown-handler' : 'home'" th:redirect="${usuariosession == null} ? '/'">
+            <div class="box">
+                P
+            </div>
+
+            <div hidden class="dropdown" style="margin-top: 2rem;" sec:authorize="hasAnyRole('ADMIN', 'VISITA', 'CLIENTE', 'COLABORADOR')">
+                <div class="groups" th:redirect="${usuariosession != null}?@{'/inicio'} : @{'/'}">
+                    Inicio
+                </div>
+                <div class="groups group-handler" sec:authorize="hasAnyRole('ADMIN')">
+                    <a class="icono">
+                        <span>Menu</span>
+                    </a>
+
+                    <div hidden class="group">
+                        <div class="window"></div>
+
+                        <div class="list" th:redirect="@{/proyecto/registrar}">
+                            <a>Nuevo Proyecto</a>
+                        </div>
+                        <div class="list" th:redirect="@{/tarea/registrar}">
+                            <a>Nueva Tarea</a>
+                        </div>
+                        <div class="list" th:redirect="@{/admin/usuarios}">
+                            <a>Lista Usuarios</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="groups group-handler" sec:authorize="hasAnyRole('CLIENTE', 'COLABORADOR', 'ADMIN')">
+                    <a class="icono">
+                        <span>Proyectos</span>
+                    </a>
+
+                    <div hidden class="group">
+                        <div class="window"></div>
+                        <div class="list" th:each="proyecto : ${proyectos}"
+                            th:redirect="@{/proyecto/__${proyecto.id}__}">
+                            <a th:text="${proyecto.nombre}"></a>
+                        </div>
+                        <div class="list agregar-proyecto" onclick="navProyectoHandler(event)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="green" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+                            </svg>
+                            <form hidden th:action="@{/proyecto/registro}" method="POST" autocomplete="off">
+                                <input type="text" name="nombre">
+                                <button type="submit">✔</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item group-handler" sec:authorize="hasAnyRole('ADMIN')">
+            <a class="icono">
+                <span>Menu</span>
+            </a>
+
+            <div hidden class="group">
+                <div class="window"></div>
+
+                <div class="list" th:redirect="@{/proyecto/registrar}">
+                    <a>Nuevo Proyecto</a>
+                </div>
+                <div class="list" th:redirect="@{/tarea/registrar}">
+                    <a>Nueva Tarea</a>
+                </div>
+                <div class="list" th:redirect="@{/admin/usuarios}">
+                    <a>Lista Usuarios</a>
+                </div>
+            </div>
+        </div>
+        <div class="item group-handler" sec:authorize="hasAnyRole('CLIENTE', 'COLABORADOR', 'ADMIN')">
+            <a class="icono">
+                <span>Proyectos</span>
+            </a>
+
+            <div hidden class="group">
+                <div class="window"></div>
+                <div class="list" th:redirect="@{/proyecto}">
+                    <a>Lista</a>
+                </div>
+                <div class="list" th:each="proyecto : ${proyectos}" th:redirect="@{/proyecto/__${proyecto.id}__}">
+                    <a th:text="${proyecto.nombre}"></a>
+                </div>
+                <div class="list agregar-proyecto" onclick="navProyectoHandler(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="green" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+                    </svg>
+                    <form hidden th:action="@{/proyecto/registro}" method="POST" autocomplete="off">
+                        <input type="text" name="nombre">
+                        <button type="submit">✔</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="middle-list">
+    </div>
+
+    <div class="end-list">
+        <div class="item dropdown-handler" th:if="${usuariosession != null}" sec:authorize="${hasRole('ADMIN')}">
+            <a class="icono">
+                <img th:src="@{/imagen/__${usuariosession.imagen.id}__}" width="48px" height="48px" alt="usuario">
+                <svg class="little-cfg" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                    <defs>
+                        <mask id="ipSConfig0">
+                            <g fill="none" stroke-linejoin="round" stroke-width="4">
+                                <path fill="#fff" stroke="#fff"
+                                    d="m24 4l-6 6h-8v8l-6 6l6 6v8h8l6 6l6-6h8v-8l6-6l-6-6v-8h-8z" />
+                                <path fill="#000" stroke="#000" d="M24 30a6 6 0 1 0 0-12a6 6 0 0 0 0 12Z" />
+                            </g>
+                        </mask>
+                    </defs>
+                    <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSConfig0)" />
+                </svg>
+            </a>
+
+            <div hidden class="dropdown" style="margin-left: -3rem;">
+                <div class="list" redirect="/admin/dashboard">
+                    <a>Admin</a>
+                </div>
+                <div class="list" onclick="ventanaNavOpen()">
+                    <a>Perfil</a>
+                </div>
+                <div class="list" redirect="/logout">
+                    <a>Cerrar Sesion</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="item dropdown-handler" th:if="${usuariosession != null}" sec:authorize="!hasRole('ADMIN')">
+            <a class="icono">
+                <img th:src="@{/imagen/__${usuariosession.imagen.id}__}" width="48px" height="48px" alt="usuario">
+            </a>
+
+            <div hidden class="dropdown">
+                <div class="list" onclick="ventanaNavOpen()">
+                    <a>Perfil</a>
+                </div>
+                <div class="list" redirect="/logout">
+                    <a>Cerrar Sesion</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="item tema" onclick="cambiarTema()">
+            <div class="circle">
+                <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+                    <g transform="rotate(-90 256 256)">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="32"
+                            d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216c88.68 0 166.73-51.57 200-128c-26.39 11.49-57.38 16-88 16c-119.29 0-216-96.71-216-216Z" />
+                    </g>
+                </svg>
+                <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+                    <path fill="currentColor"
+                        d="M120 40V16a8 8 0 0 1 16 0v24a8 8 0 0 1-16 0Zm72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64Zm-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48ZM58.34 69.66a8 8 0 0 0 11.32-11.32l-16-16a8 8 0 0 0-11.32 11.32Zm0 116.68l-16 16a8 8 0 0 0 11.32 11.32l16-16a8 8 0 0 0-11.32-11.32ZM192 72a8 8 0 0 0 5.66-2.34l16-16a8 8 0 0 0-11.32-11.32l-16 16A8 8 0 0 0 192 72Zm5.66 114.34a8 8 0 0 0-11.32 11.32l16 16a8 8 0 0 0 11.32-11.32ZM48 128a8 8 0 0 0-8-8H16a8 8 0 0 0 0 16h24a8 8 0 0 0 8-8Zm80 80a8 8 0 0 0-8 8v24a8 8 0 0 0 16 0v-24a8 8 0 0 0-8-8Zm112-88h-24a8 8 0 0 0 0 16h24a8 8 0 0 0 0-16Z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div style="position: absolute; margin: 4rem 5% 0 5%; background: var(--primary); width: calc(100% - 10%); padding: .5rem 0; text-align: center; color: white; z-index: -999; border-radius: 0 0 .5rem .5rem;" sec:authorize="${hasAnyRole('VISITA')}">
+        Accede a nuestras herramientas verificando tu correo
+    </div>
+
+    <div hidden class="fondo">
+        <div class="ventana">
+            <div class="perfil" th:if="${usuariosession != null}">
+                <div style="font-size: 4rem; position: absolute;">Perfil</div>
+                <form th:action="@{/perfil/modificar}" method="POST" enctype="multipart/form-data" autocomplete="off">
+                    <div class="perfil-container">
+                        <div>
+                            <label for="imagen">
+                                <img class="perfil-camara" src="/img/camera.png" alt="Seleccionar foto"> </span>
+                                <img class="perfil-foto" th:src="@{/imagen/__${usuariosession.imagen.id}__}"
+                                    th:defecto="@{/imagen/__${usuariosession.imagen.id}__}" id="perfil-logo"
+                                    alt="imagen">
+                            </label>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" name="nombre" id="nombre" th:value="${usuariosession.nombre}"
+                                    placeholder="Ingrese su nuevo nombre">
+                            </div>
+                            <div>
+                                <input disabled type="text" id="email" th:value="${usuariosession.email}"
+                                    placeholder="Ingrese su nuevo nombre">
+                            </div>
+                            <div>
+                                <input type="number" name="telefono" id="telefono" th:value="${usuariosession.telefono}"
+                                    placeholder="Ingrese su nuevo telefono">
+                            </div>
+                            <div>
+                                <textarea name="descripcion" id="descripcion" th:text="${usuariosession.descripcion}"
+                                    placeholder="Ingrese una nueva descripcion"></textarea>
+                            </div>
+                            <div>
+                                <input hidden type="file" accept=".jpg, .jpeg, .png" name="archivo" id="imagen"
+                                    placeholder="Ingrese una foto" onchange="cambiarNavFoto()">
+                            </div>
+                            <div>
+                                <button type="submit">Actualizar</button>
+                            </div>
+                            <div>
+                                <button type="button" redirect="/enviar-validacion/">Modificar Datos</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <svg class="salir" onclick="ventanaNavExit()" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                    viewBox="0 0 15 15">
+                    <path fill="currentColor" fill-rule="evenodd"
+                        d="M11.782 4.032a.575.575 0 1 0-.813-.814L7.5 6.687L4.032 3.218a.575.575 0 0 0-.814.814L6.687 7.5l-3.469 3.468a.575.575 0 0 0 .814.814L7.5 8.313l3.469 3.469a.575.575 0 0 0 .813-.814L8.313 7.5l3.469-3.468Z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Script de la navbar -->
+    <script src="/js/navbar.js"></script>
+</nav>

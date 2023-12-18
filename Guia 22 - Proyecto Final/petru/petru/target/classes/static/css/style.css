@@ -1,0 +1,28 @@
+:root[data-theme="light"] {
+    --text: rgb(0, 0, 0);
+    --background: rgb(238, 229, 255);
+    --primary: rgb(101, 38, 247);
+    --secondary: rgb(213, 188, 245);
+    --accent: rgb(160, 118, 249);
+    --current: rgb(255, 255, 255);
+    --contrast: rgb(0, 0, 0);
+}
+
+:root[data-theme="dark"] {
+    --text: rgb(255, 255, 255);
+    --background: rgb(9, 0, 26);
+    --primary: rgb(70, 8, 217);
+    --secondary: rgb(34, 10, 67);
+    --accent: rgb(47, 6, 137);
+    --current: rgb(0, 0, 0);
+    --contrast: rgb(255, 255, 255);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    margin: 0;
+    overflow-x: hidden;
+    transition: background .4s;
+}
